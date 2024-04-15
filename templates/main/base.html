@@ -1,0 +1,99 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{% block title %} Shop.Online {% endblock %}</title>
+</head>
+<body>
+ <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/" >Shop.Online</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" area-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/product">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Popular Products</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+                    <li class='nav-item'>
+                        {% if error_message %}
+                        <p style="color: red;">{{ error_message }}</p>
+                    {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav padding: 20px" id="authButtons">
+                {% if user.is_authenticated %}
+                <li class="nav-item" id="btn-welcome">
+                    <span>Welcome <span class="username">{{user.username}}</span></span>
+                </li>
+                <li class="nav-item" id="btn-signout">
+                    <i class="fa fa-sign-out "><a class="nav-link" href="/signout">signout</a>
+                    </i>
+                </li>
+                {% else %}
+                <li class="nav-item" id="btn-signin">
+                    <i class="fa fa-sign-in" aria-hidden="true"><a class="nav-link" href="/login">signin</a></i>
+                </li>
+
+                {% endif %}
+
+        </ul>
+
+        </div>
+
+    </nav>
+ </header>
+ {% block content %}
+ 
+ {% endblock %}
+ <footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <ul>
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Phone Number</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Feedback</h4>
+            <ul>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">Complaint</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h4>Social Media Links</h4>
+            <ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="{% static 'index.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

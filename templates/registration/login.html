@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <h1 class="">Sign In</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

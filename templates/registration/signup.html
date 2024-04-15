@@ -1,0 +1,61 @@
+{% extends "main/base.html" %}
+{% block title %}Sign Up Form{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST" class="signupform">
+                {% csrf_token %}
+                <div class="row mb-3 mt-5">
+                    <div class="col-md-6">
+                        <label for="id_email" class="form-label">Email:</label>
+                        <input type="email" name="email" id="id_email" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_username" class="form-label">Username:</label>
+                        <input type="text" name="username" id="id_username" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_password1" class="form-label">Password:</label>
+                        <input type="password" name="password1" id="id_password1" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_password2" class="form-label">Confirm Password:</label>
+                        <input type="password" name="password2" id="id_password2" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_dateofbirth" class="form-label">Date of Birth:</label>
+                        <input type="date" name="dateofbirth" id="id_dateofbirth" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_city" class="form-label">City:</label>
+                        <select name="city" id="id_city" class="form-select">
+                            <option value="Lahore">Lahore</option>
+                            <option value="Islamabad">Islamabad</option>
+                            <option value="Karachi">Karachi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_phone_number" class="form-label">Phone Number:</label>
+                        <input type="tel" name="phone_number" id="id_phone_number" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
